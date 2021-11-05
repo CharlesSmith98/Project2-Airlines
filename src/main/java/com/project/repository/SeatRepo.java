@@ -2,12 +2,13 @@ package com.project.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.project.models.Seat;
 
-public interface SeatRepo {
+public interface SeatRepo extends JpaRepository<Seat, Integer>{
 
-	Seat selectById(int id);
-	List<Seat> selectAll();
-	void create(Seat s);
+	Seat getById(int id);
+	List<Seat> findAll();
 	
 }
