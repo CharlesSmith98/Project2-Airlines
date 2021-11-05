@@ -37,12 +37,6 @@ public class SeatController {
 	@PostMapping(value="/create")
 	public Seat createSeat(@RequestBody Seat s) {
 		System.out.println(s);
-		
-//		int id = Integer.parseInt(s.get("id"));
-//		int flightId = Integer.parseInt(s.get("flight"));
-//		Boolean available = Boolean.parseBoolean(s.get("availableSeat"));
-//		//make flight get by id
-//		Seat s = new Seat();
 		return sServ.createSeat(s);
 	}
 	
