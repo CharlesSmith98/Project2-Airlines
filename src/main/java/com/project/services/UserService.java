@@ -1,5 +1,8 @@
 package com.project.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,13 +11,12 @@ import com.project.repository.UserRepo;
 
 @Service
 public class UserService {
-
+	
 	private UserRepo uDao;
-
+	
 	@Autowired
-	public UserService(UserRepo uDao) {
-		super();
-		this.uDao = uDao;
+	public UserService(UserRepo u) {
+		this.uDao = u;
 	}
 	
 	public User createUser(User u) {
@@ -24,6 +26,14 @@ public class UserService {
 		} catch(Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+	
+	public List<User> getAllUser() {
+		try {
+			return uDao.findAll();
+		} catch(Exception e) {
+			return new ArrayList<User>();
 		}
 	}
 	

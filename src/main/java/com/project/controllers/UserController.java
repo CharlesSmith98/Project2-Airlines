@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.models.User;
-import com.project.service.UserService;
+import com.project.services.UserService;
 
 @RestController
 @RequestMapping(value="/user")
