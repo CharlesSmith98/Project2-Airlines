@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.models.User;
@@ -24,7 +25,7 @@ public class UserController {
 	private UserJsonParser ujp;
 
 	@Autowired
-	public UserController(UserService uService) {
+	public UserController(UserService uServ) {
 		super();
 		this.uServ = uServ;
 		this.ujp = UserJsonParser.getUserJsonParser();
@@ -46,6 +47,21 @@ public class UserController {
 		User u = ujp.parse(userJson);
 		System.out.println("Result of parsing Json User:" + u);
 		return ujp.parse(userJson);
+	}
+	
+	@GetMapping(value="/get/user")
+	public User getUserById(@RequestParam int id) {
+		return uServ.getUserById(id);
+	}
+	
+	@GetMapping(value="/signin")
+	public User signIn(@RequestParam String username, @RequestParam String password) {
+		return uServ.signIn(username, password);
+	}
+	
+	@GetMapping(value="/role")
+	public List<User> getUserByroleId(@RequestParam int id) {
+		return uServ.getUserByroleId(id);
 	}
 	
 }

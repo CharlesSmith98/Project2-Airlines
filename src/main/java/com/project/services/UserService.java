@@ -37,4 +37,16 @@ public class UserService {
 		}
 	}
 	
+	public User getUserById(int id) {
+		return uDao.findById(id);
+	}
+	
+	public User signIn(String username, String password) {
+		return uDao.findByUsernameAndPassword(username, password);
+	}
+	
+	public List<User> getUserByroleId(int id) {
+		return uDao.findByRoleId(id);
+	}
+	
 }
