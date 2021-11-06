@@ -18,7 +18,7 @@ public class Seat {
 	
 	@Id
 	@Column(name="seat_id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
 	
@@ -30,13 +30,19 @@ public class Seat {
 	@Column(name="seat_available", nullable=false)
 	private Boolean seatAvailable;
 		
-		
+
+	
 	public Seat() {
-		this.seatAvailable = false;
+		
 	}
 	
-	
-	
+	public Seat(int id, Flight flight, Boolean seatAvailable) {
+		super();
+		this.id = id;
+		this.flight = flight;
+		this.seatAvailable = seatAvailable;
+	}
+
 	public int getId() {
 		return id;
 	}

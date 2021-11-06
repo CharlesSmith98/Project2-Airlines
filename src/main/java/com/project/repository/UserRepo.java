@@ -6,5 +6,4 @@ import com.project.models.User;
 
 public interface UserRepo extends JpaRepository<User, Integer> {
 	
-
 }
