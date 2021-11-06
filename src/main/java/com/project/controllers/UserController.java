@@ -1,6 +1,7 @@
 package com.project.controllers;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +19,13 @@ import com.project.util.UserJsonParser;
 public class UserController {
 
 
-	private UserService uService;
+	private UserService uServ;
 	private UserJsonParser ujp;
 
 	@Autowired
 	public UserController(UserService uService) {
 		super();
-		this.uService = uService;
+		this.uServ = uServ;
 		this.ujp = UserJsonParser.getUserJsonParser();
 
 	}
