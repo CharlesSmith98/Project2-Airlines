@@ -17,7 +17,7 @@ public class Flight {
 
 	@Id
 	@Column(name="flight_id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name="name")
@@ -40,6 +40,17 @@ public class Flight {
 	
 	public Flight() {
 		
+	}
+
+	public Flight(int id, String name, Date takeoff, Time eta, String destination, String origin, int seats) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.takeoff = takeoff;
+		this.eta = eta;
+		this.destination = destination;
+		this.origin = origin;
+		this.seats = seats;
 	}
 
 	public int getId() {
