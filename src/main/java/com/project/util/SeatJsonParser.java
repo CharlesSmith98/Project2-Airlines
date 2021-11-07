@@ -19,7 +19,7 @@ public class SeatJsonParser {
 	public Seat parse(LinkedHashMap<String, Object> seatJson) {
 		int id = Integer.parseInt((seatJson.get("id")).toString());
 		FlightJsonParser fjp = FlightJsonParser.getFlightJsonParser();
-		Flight flight = fjp.parse((LinkedHashMap<String, String>)(seatJson.get("flight")));
+		Flight flight = fjp.parse((LinkedHashMap<String, Object>)(seatJson.get("flight")));
 		boolean seatAvailable = Boolean.parseBoolean((seatJson.get("seatAvailable")).toString());
 		Seat seat = new Seat(id, flight, seatAvailable);
 		return seat;
