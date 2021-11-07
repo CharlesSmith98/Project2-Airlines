@@ -1,7 +1,6 @@
 package com.project.models;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +26,7 @@ public class Flight {
 	private Date takeoff;
 	
 	@Column(name="eta")
-	private Time eta;
+	private Date eta;
 	
 	@Column(name="destination")
 	private String destination;
@@ -42,7 +41,7 @@ public class Flight {
 		
 	}
 
-	public Flight(int id, String name, Date takeoff, Time eta, String destination, String origin, int seats) {
+	public Flight(int id, String name, Date takeoff, Date eta, String destination, String origin, int seats) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -77,11 +76,11 @@ public class Flight {
 		this.takeoff = takeoff;
 	}
 
-	public Time getEta() {
+	public Date getEta() {
 		return eta;
 	}
 
-	public void setEta(Time eta) {
+	public void setEta(Date eta) {
 		this.eta = eta;
 	}
 
@@ -107,6 +106,12 @@ public class Flight {
 
 	public void setSeats(int seats) {
 		this.seats = seats;
+	}
+
+	@Override
+	public String toString() {
+		return "Flight [id=" + id + ", name=" + name + ", takeoff=" + takeoff + ", eta=" + eta + ", destination="
+				+ destination + ", origin=" + origin + ", seats=" + seats + "]";
 	}
 	
 }

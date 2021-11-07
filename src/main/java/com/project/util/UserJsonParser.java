@@ -15,14 +15,14 @@ public class UserJsonParser {
 		return ujp;
 	}
 	
-	public User parse(LinkedHashMap<String, String> userJson) {
-		int userId = Integer.parseInt(userJson.get("userId"));
-		String firstName = userJson.get("firstName");
-		String lastName = userJson.get("lastName");
-		String username = userJson.get("username");
-		String password = userJson.get("password");
-		int roleId = Integer.parseInt(userJson.get("roleId"));
-		String email = userJson.get("email");
+	public User parse(LinkedHashMap<String, Object> userJson) {
+		int userId = Integer.parseInt((userJson.get("userId")).toString());
+		String firstName = userJson.get("firstName").toString();
+		String lastName = userJson.get("lastName").toString();
+		String username = userJson.get("username").toString();
+		String password = userJson.get("password").toString();
+		int roleId = Integer.parseInt((userJson.get("roleId")).toString());
+		String email = userJson.get("email").toString();
 		User u = new User(userId, username, password, firstName, lastName, roleId, email);
 		return u;
 	}
