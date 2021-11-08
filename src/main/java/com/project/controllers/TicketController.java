@@ -44,9 +44,9 @@ public class TicketController {
 		System.out.println(ticketJson);
 		User user = ujp.parse((LinkedHashMap<String, Object>)ticketJson.get("user"));
 		Seat seat = sjp.parse((LinkedHashMap<String, Object>)ticketJson.get("seat"));
-		Flight flight = fjp.parse((LinkedHashMap<String, Object>)ticketJson.get("flight"));
-		System.out.println(flight);
-		return null;
+		Flight flight = seat.getFlight();
+		Ticket t = new Ticket(1, user, seat, flight);
+		return tService.createTicket(t);
 	}
 	
 	@GetMapping(value="/")
