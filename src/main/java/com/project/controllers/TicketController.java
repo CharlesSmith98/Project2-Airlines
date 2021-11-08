@@ -38,6 +38,9 @@ public class TicketController {
 		super();
 		this.tService = tService;
 		this.tjp = TicketJsonParser.geTicketJsonParser();
+		this.fjp = FlightJsonParser.getFlightJsonParser();
+		this.sjp = SeatJsonParser.getSeatJsonParser();
+		this.ujp = UserJsonParser.getUserJsonParser();
 	}
 	
 	@PostMapping(value="/create")
