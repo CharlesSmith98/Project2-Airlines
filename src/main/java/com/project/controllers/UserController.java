@@ -43,7 +43,7 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/get")
-	public User getUser(@RequestBody LinkedHashMap<String, String> userJson) {
+	public User getUser(@RequestBody LinkedHashMap<String, Object> userJson) {
 		User u = ujp.parse(userJson);
 		System.out.println("Result of parsing Json User:" + u);
 		return ujp.parse(userJson);

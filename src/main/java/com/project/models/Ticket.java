@@ -40,6 +40,18 @@ public class Ticket {
 	public Ticket() {
 		this.ticketId = 0;
 	}
+	
+	
+
+	public Ticket(int ticketId, User user, Seat seat, Flight flight) {
+		super();
+		this.ticketId = ticketId;
+		this.user = user;
+		this.seat = seat;
+		this.flight = flight;
+	}
+
+
 
 	public int getTicketId() {
 		return ticketId;
