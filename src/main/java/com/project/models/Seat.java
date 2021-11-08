@@ -36,8 +36,13 @@ public class Seat {
 		
 	}
 	
-	
-	
+	public Seat(int id, Flight flight, Boolean seatAvailable) {
+		super();
+		this.id = id;
+		this.flight = flight;
+		this.seatAvailable = seatAvailable;
+	}
+
 	public int getId() {
 		return id;
 	}

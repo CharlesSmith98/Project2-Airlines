@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.models.Flight;
 import com.project.models.Ticket;
 import com.project.models.User;
 import com.project.repository.TicketRepo;
@@ -49,6 +50,25 @@ public class TicketService {
 			return null;
 		}
 	}
+	
+	public List<Ticket> getTicketsByFlight(Flight flight) {
+		try {
+			List<Ticket> tickets = tDao.findAllByFlight(flight);
+			return tickets;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
+	public Ticket getTicketById(int id) {
+		try {
+			Ticket t = tDao.findByTicketId(id);
+			return t;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 }
