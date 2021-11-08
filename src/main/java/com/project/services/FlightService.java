@@ -39,7 +39,7 @@ public class FlightService {
 		Seat s = null;
 		for(int i = 0; i < nf.getSeats(); i++) {
 			s = new Seat();
-			s.setFlight_id(f); //This needs to be rename in Seat model by Suzanna
+			s.setFlight(f); //This needs to be rename in Seat model by Suzanna
 			s.setSeatAvailable(true);
 			sr.save(s);
 		}
