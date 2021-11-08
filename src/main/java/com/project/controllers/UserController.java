@@ -29,7 +29,6 @@ public class UserController {
 		super();
 		this.uServ = uServ;
 		this.ujp = UserJsonParser.getUserJsonParser();
-
 	}
 	
 	@PostMapping(value="/create")
