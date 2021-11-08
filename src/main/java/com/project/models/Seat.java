@@ -61,7 +61,7 @@ public class Seat {
 
 
 
-	public void setFlight_id(Flight flight) {
+	public void setFlight(Flight flight) {
 		this.flight = flight;
 	}
 
@@ -84,26 +84,6 @@ public class Seat {
 		return "Seat [id=" + id + ", flight=" + flight.getId() + ", seatAvailable=" + seatAvailable + "]";
 	}
 
-
-
-	public void makeSeats() {
-		
-		for(int i = 0; i<21; i++)
-		{
-			// Remove later maybe?
-/*			Seat seat = new Seat();
- *			
- *			Session ses = HibernateUtil.getSession();
- *			
- *			Transaction tran = ses.beginTransaction();
- *			
- *			//Use the .save() method on the session object to save the user to database, then commit the transaction
- *			ses.save(seat);
- *			tran.commit();*/
-		}
-	}
-	
-	
 }
 
 
