@@ -1,11 +1,15 @@
 package com.project.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.project.models.User;
 
-public interface UserRepo extends JpaRepository<User, Integer>{
-
-	// TODO add additional CRUD operations
+public interface UserRepo extends JpaRepository<User, Integer> {
+	
+	public User findByUsernameAndPassword(String username, String password);
+	public List<User> findByRoleId(int id);
+	public User findById(int id);
 	
 }
