@@ -19,6 +19,15 @@ public class SeatService {
 		this.sDao = sd;
 	}
 
+	public Seat getSeatById(int id) {
+		try {
+		return sDao.getById(id);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	public Seat createSeat(Seat s) {
 		try {
 			sDao.save(s);

@@ -56,7 +56,7 @@ public class Seat {
 
 
 
-	public void setFlight_id(Flight flight) {
+	public void setFlight(Flight flight) {
 		this.flight = flight;
 	}
 
