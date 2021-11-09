@@ -31,6 +31,26 @@ public class TicketService {
 		}
 	}
 	
+	public Ticket updateTicket(Ticket t) {
+		try {
+			tDao.save(t);
+			return t;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public boolean deleteTicket(Ticket t) {
+		try {
+			tDao.delete(t);
+			return true;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public List<Ticket> getAllTickets() {
 		try {
 			List<Ticket> tickets = tDao.findAll();
