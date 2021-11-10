@@ -11,14 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.models.Flight;
-import com.project.models.Seat;
 import com.project.models.Ticket;
 import com.project.models.User;
-import com.project.services.FlightService;
 import com.project.services.TicketService;
-import com.project.services.UserService;
 import com.project.util.FlightJsonParser;
-import com.project.util.SeatJsonParser;
+import com.project.util.TicketJsonParser;
 import com.project.util.UserJsonParser;
 
 @RestController
@@ -26,26 +23,24 @@ import com.project.util.UserJsonParser;
 public class TicketController {
 
 	private UserJsonParser ujp;
-	private SeatJsonParser sjp;
 	private FlightJsonParser fjp;
+	private TicketJsonParser tjp;
 	private TicketService tService;
 
 	@Autowired
 	public TicketController(TicketService tService) {
 		super();
 		this.tService = tService;
-		this.ujp = UserJsonParser.getUserJsonParser();
-		this.sjp = SeatJsonParser.getSeatJsonParser();
+		this.tjp = TicketJsonParser.geTicketJsonParser();
 		this.fjp = FlightJsonParser.getFlightJsonParser();
+		this.ujp = UserJsonParser.getUserJsonParser();
 	}
 	
 	@PostMapping(value="/create")
 	public Ticket createTicket(@RequestBody LinkedHashMap<String, Object> ticketJson) {
 		System.out.println(ticketJson);
-		User user = ujp.parse((LinkedHashMap<String, Object>)ticketJson.get("user"));
-		Seat seat = sjp.parse((LinkedHashMap<String, Object>)ticketJson.get("seat"));
-		Flight flight = seat.getFlight();
-		Ticket t = new Ticket(1, user, seat, flight);
+		Ticket t = tjp.parse(ticketJson);
+		System.out.println(t);
 		return tService.createTicket(t);
 	}
 	
@@ -55,10 +50,35 @@ public class TicketController {
 		return tService.getAllTickets();
 	}
 	
-	@GetMapping(value="/get/user")
+	@PostMapping(value="/delete")
+	public Ticket deleteTicket(LinkedHashMap<String, Object> ticketJson) {
+		System.out.println(ticketJson);
+		Ticket t = tjp.parse(ticketJson);
+		if(tService.deleteTicket(t))
+			return t;
+		
+		return null;
+	}
+	
+	@PostMapping(value="/get/user")
 	public List<Ticket> getTicketsByUser(@RequestBody LinkedHashMap<String, Object> userJson) {
 		User user = ujp.parse(userJson);
 		return tService.getTicketsByUser(user);
 	}
 	
+	@PostMapping(value="/get/flight")
+	public List<Ticket> getTicketsByFlight(@RequestBody LinkedHashMap<String, Object> flightJson) {
+		Flight flight = fjp.parse(flightJson);
+		for (Ticket tk : tService.getTicketsByFlight(flight))
+			System.out.println(tk);
+		return tService.getTicketsByFlight(flight);
+	}
+	
+	/*  NOT WORKING WILL FIX LATER
+	 *	@PostMapping(value="/update")
+	 *	public Ticket updateTicket(@RequestBody LinkedHashMap<String, Object> ticketJson) {
+	 *		Ticket t = tjp.parse(ticketJson);
+	 *		return tService.updateTicket(t);
+	 *	}
+	 */
 }

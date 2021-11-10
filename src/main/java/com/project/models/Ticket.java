@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,7 +23,7 @@ public class Ticket {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int ticketId;
 	
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	@JsonIgnore
 	private User user;
