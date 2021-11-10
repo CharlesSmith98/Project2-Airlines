@@ -19,6 +19,7 @@ public class TicketJsonParser {
 	}
 	
 	public Ticket parse(LinkedHashMap<String, Object> ticketJson) {
+		System.out.println(ticketJson);
 		User user = UserJsonParser.getUserJsonParser().parse(
 				(LinkedHashMap<String, Object>)ticketJson.get("user"));
 		Seat seat = SeatJsonParser.getSeatJsonParser().parse(
