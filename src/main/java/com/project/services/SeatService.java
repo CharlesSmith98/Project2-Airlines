@@ -21,7 +21,7 @@ public class SeatService {
 
 	public Seat getSeatById(int id) {
 		try {
-		return sDao.getById(id);
+		return sDao.findById(id);
 		}catch(Exception e) {
 			e.printStackTrace();
 			return null;

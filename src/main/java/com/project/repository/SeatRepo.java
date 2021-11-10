@@ -8,7 +8,7 @@ import com.project.models.Seat;
 
 public interface SeatRepo extends JpaRepository<Seat, Integer>{
 
-	Seat getById(int id);
+	Seat findById(int id);
 	List<Seat> findAll();
 	
 }
