@@ -40,6 +40,7 @@ public class TicketController {
 	public Ticket createTicket(@RequestBody LinkedHashMap<String, Object> ticketJson) {
 		System.out.println(ticketJson);
 		Ticket t = tjp.parse(ticketJson);
+		System.out.println(t);
 		return tService.createTicket(t);
 	}
 	
@@ -47,6 +48,16 @@ public class TicketController {
 	public List<Ticket> getAllTickets() {
 		System.out.println("In Get All Tickets");
 		return tService.getAllTickets();
+	}
+	
+	@PostMapping(value="/delete")
+	public Ticket deleteTicket(LinkedHashMap<String, Object> ticketJson) {
+		System.out.println(ticketJson);
+		Ticket t = tjp.parse(ticketJson);
+		if(tService.deleteTicket(t))
+			return t;
+		
+		return null;
 	}
 	
 	@PostMapping(value="/get/user")
