@@ -1,3 +1,6 @@
-export interface ISeat{
-    // TODO: Add Seat Properties
+
+export interface ISeat {
+    seatId: number;
+    seatAvailable: boolean;
+    flightId: number;
 }
