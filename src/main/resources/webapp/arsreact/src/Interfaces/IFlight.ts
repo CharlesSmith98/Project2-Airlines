@@ -1,3 +1,9 @@
 export interface IFlight{
-    // TODO: Add flight properties
+    id: number,
+    name: string,
+    takeoff: Date,
+    eta: Date,
+    destination: string,
+    origin: string,
+    seats: number;
 }
