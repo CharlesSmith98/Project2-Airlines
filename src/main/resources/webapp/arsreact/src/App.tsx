@@ -7,7 +7,6 @@ import { Main } from './Components/Landing/Main';
 
 function App() {
 
-
   return (
     <div className="grad h-100">
       <Router>
@@ -16,7 +15,6 @@ function App() {
           <Route exact path="/book"><Book /></Route>
         </Switch>
       </Router>
-    </div>
   );
 }
 
