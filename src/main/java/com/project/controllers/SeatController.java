@@ -32,6 +32,12 @@ public class SeatController {
 		return sServ.getAllSeats();
 	}
 	
+	@GetMapping (value="/get/flight/seats")
+	public List<Seat> getSeatsByFlight(@RequestParam int id){
+		System.out.println("In the /get/flight/seats method");
+		return sServ.getAllSeatsByFlight(id);
+	}
+	
 	@PostMapping(value="/create")
 	public Seat createSeat(@RequestBody Seat s) {
 		System.out.println("In the /create method");
