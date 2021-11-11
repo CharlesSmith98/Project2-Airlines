@@ -2,12 +2,18 @@ package com.project.models;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -28,11 +34,15 @@ public class Flight {
 	@Column(name="eta")
 	private Date eta;
 	
-	@Column(name="destination")
-	private String destination;
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinColumn(name="destination_id")
+	@JsonIgnore
+	private City destination;
 	
-	@Column(name="origin")
-	private String origin;
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinColumn(name="origin_id")
+	@JsonIgnore
+	private City origin;
 	
 	@Column(name="seats")
 	private int seats;
@@ -41,7 +51,7 @@ public class Flight {
 		
 	}
 
-	public Flight(int id, String name, Date takeoff, Date eta, String destination, String origin, int seats) {
+	public Flight(int id, String name, Date takeoff, Date eta, City destination, City origin, int seats) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -84,19 +94,19 @@ public class Flight {
 		this.eta = eta;
 	}
 
-	public String getDestination() {
+	public City getDestination() {
 		return destination;
 	}
 
-	public void setDestination(String destination) {
+	public void setDestination(City destination) {
 		this.destination = destination;
 	}
 
-	public String getOrigin() {
+	public City getOrigin() {
 		return origin;
 	}
 
-	public void setOrigin(String origin) {
+	public void setOrigin(City origin) {
 		this.origin = origin;
 	}
 
@@ -110,8 +120,25 @@ public class Flight {
 
 	@Override
 	public String toString() {
-		return "Flight [id=" + id + ", name=" + name + ", takeoff=" + takeoff + ", eta=" + eta + ", destination="
-				+ destination + ", origin=" + origin + ", seats=" + seats + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Flight [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", takeoff=");
+		builder.append(takeoff);
+		builder.append(", eta=");
+		builder.append(eta);
+		builder.append(", destination=");
+		builder.append(destination);
+		builder.append(", origin=");
+		builder.append(origin);
+		builder.append(", seats=");
+		builder.append(seats);
+		builder.append("]");
+		return builder.toString();
 	}
+
+
 	
 }
