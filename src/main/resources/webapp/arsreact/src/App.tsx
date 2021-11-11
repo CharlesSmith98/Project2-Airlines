@@ -15,6 +15,7 @@ function App() {
           <Route exact path="/book"><Book /></Route>
         </Switch>
       </Router>
+    </div>
   );
 }
 
