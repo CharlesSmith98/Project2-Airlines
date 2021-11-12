@@ -17,8 +17,23 @@ interface UserLogin {
     password: string
 }
 
-export const newUser = (user:UserReg) => async (dispatch: any) => {
-    //some register logic here
+export const createUser = (user:UserReg) => async (dispatch: any) => {
+    let create: IUser;
+    const res = await axios.post('http://localhost:8080/user/create', user);
+
+    create = {
+        userId: res.data.userId,
+        username: res.data.username,
+        password: res.data.password,
+        firstName: res.data.firstName,
+        lastName: res.data.lastName,
+        roleId: res.data.roleId,
+        email: res.data.email   
+    }
+    return dispatch({
+        type: ADD_USER,
+        payload: create
+    });
 }
 
 export const loginUser = (user:UserLogin) => async (dispatch: any) => {

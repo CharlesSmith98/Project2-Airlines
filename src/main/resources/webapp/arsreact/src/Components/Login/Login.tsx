@@ -40,26 +40,25 @@ export const Login:React.FC<any> = () => {
         );
     }
 
-    return(
-        <div className="login">
-            <div className="text-container">
-                <h1 className="login-h1">Welcome to Socialhub!</h1>
-                <h2>Sign in to see what everyone's up to!</h2>
-            </div>
-            <form className="login-form">
-                <div className="input-div">
-                    <h4 className="login-h4">Enter Username</h4>
-                    <input className="login-input" autoComplete="off" type="text" name="username"
-                        placeholder="Username" onChange={handleChange} id="username"/>
+    return (
+        <form>
+                <h3>Sign In</h3>
+
+                <div className="form-group">
+                    <label>Username</label>
+                    <input type="text" className="form-control" placeholder="Enter username" name="username" onChange={handleChange} id="username" />
                 </div>
-                <div className="input-div">
-                    <h4 className="login-h4">Enter Password</h4>
-                    <input className="login-input" type="password" name="password"
-                        placeholder="Password" onChange={handleChange} id="password"/>
+
+                <div className="form-group">
+                    <label>Password</label>
+                    <input type="password" className="form-control" placeholder="Enter password" name="password" onChange={handleChange} id="password"/>
                 </div>
+
+                
+                <button type="submit" className="btn btn-primary btn-block" onClick={login}>Login</button>
+                
             </form>
-            <button className="login-button" onClick={login}>Login</button>
-        </div>
-    )
+    );
+  
 
 }

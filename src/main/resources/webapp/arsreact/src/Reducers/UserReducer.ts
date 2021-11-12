@@ -23,6 +23,12 @@ export const userReducer = (state: IUser = initialState, action:Action) => {
             return {
                 ...initialState
             }
+        case ADD_USER:
+            initialState = action.payload;
+            console.log(action.payload);
+            return {
+                ...initialState
+            }    
         default:
             return state;
     }
