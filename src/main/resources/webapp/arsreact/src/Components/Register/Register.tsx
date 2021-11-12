@@ -24,7 +24,7 @@ export const Register:React.FC<any> = () => {
     useEffect(() => {
         console.log(appState);
         if(appState.user.id > 0){
-            history.push('/login');
+            history.push('/sign-in');
         }
     }, [appState]);
 

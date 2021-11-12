@@ -1,14 +1,17 @@
-import {IUser} from "../Store/types";
+
+import {IUser} from "../Interfaces/IUser";
+
 //Later we will import our action types
 import {LOGIN_USER, ADD_USER} from '../Actions/ActionTypes';
 
 let initialState:IUser = {
-    userId: 0,
+
+    id: 0,
     username: '',
     password: '',
-    firstName: '',
-    lastName: '',
-    roleId: 0,
+    firstname: '',
+    lastname: '',
+    roleid: 0,
     email: ''   
 };
 

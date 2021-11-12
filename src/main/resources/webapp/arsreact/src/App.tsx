@@ -1,41 +1,27 @@
 import React from 'react';
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
-import {HashRouter as Router, Link, Route, Switch} from 'react-router-dom';
-import {Login} from './Components/Login/Login';
-import {Register} from './Components/Register/Register'
-
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
+import { Book } from './Components/Flight/Book';
+import './Components/Landing/Main'
+import { Main } from './Components/Landing/Main';
+import { Login } from './Components/Login/Login';
+import { Register } from './Components/Register/Register';
 
 function App() {
-  return (<Router>
-    <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-        <div className="container">
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to={"/sign-in"}>Login</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to={"/sign-up"}>Sign Up</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
 
-      <div className="auth-wrapper">
-        <div className="auth-inner">
-          <Switch>
-            <Route exact path='/' component={Login} />
-            <Route path="/sign-in" component={Login} />
-            <Route path="/sign-up" component={Register} />
-          </Switch>
-        </div>
-      </div>
-    </div></Router>
+
+  return (
+    <div className="grad h-100">
+      <Router>
+        <Switch>
+          <Route exact path="/"><Main /></Route>
+          <Route exact path="/book"><Book /></Route>
+          <Route exact path="/login"><Login /></Route>
+          <Route exact path="/register"><Register /></Route>
+        </Switch>
+      </Router>
+    </div>
   );
   
 }

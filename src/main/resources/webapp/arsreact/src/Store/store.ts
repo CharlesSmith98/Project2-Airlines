@@ -4,16 +4,16 @@ import thunk from 'redux-thunk';
 //We will create this in a second
 import reducer from '../Reducers';
 
-import {AppState} from './types';
+import {AppState} from '../Interfaces/IUser';
 
 const initialState:AppState = {
     user: {
-        userId: 0,
+        id: 0,
         username: '',
         password: '',
-        firstName: '',
-        lastName: '',
-        roleId: 0,
+        firstname: '',
+        lastname: '',
+        roleid: 0,
         email: ''   
     },
 }

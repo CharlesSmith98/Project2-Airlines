@@ -3,12 +3,17 @@ package com.project.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.project.models.Seat;
 
 public interface SeatRepo extends JpaRepository<Seat, Integer>{
 
-	Seat getById(int id);
+	Seat findById(int id);
 	List<Seat> findAll();
+	
+	@Query("from Seat s where s.flight = :id")
+	List<Seat> findByFlight(@Param("id") int id);
 	
 }

@@ -1,6 +1,8 @@
 //This is the file where actual business logic will occur, including calls to the api
 import axios from 'axios';
-import { IUser } from '../Store/types';
+
+import { IUser } from '../Interfaces/IUser';
+
 import {ADD_USER, LOGIN_USER} from './ActionTypes';
 
 interface UserReg {
@@ -19,21 +21,43 @@ interface UserLogin {
 
 export const createUser = (user:UserReg) => async (dispatch: any) => {
     let create: IUser;
-    const res = await axios.post('http://localhost:8080/user/create', user);
 
-    create = {
-        userId: res.data.userId,
-        username: res.data.username,
-        password: res.data.password,
-        firstName: res.data.firstName,
-        lastName: res.data.lastName,
-        roleId: res.data.roleId,
-        email: res.data.email   
+
+    try {
+        const res = await axios.post('http://localhost:8080/user/create', user);
+
+        create = {
+            id: res.data.userId,
+            username: res.data.username,
+            password: res.data.password,
+            firstname: res.data.firstName,
+            lastname: res.data.lastName,
+            roleid: res.data.roleId,
+            email: res.data.email   
+            }
+        return dispatch({
+            type: ADD_USER,
+            payload: create
+        });
     }
-    return dispatch({
-        type: ADD_USER,
-        payload: create
-    });
+    catch(e){
+
+        create = {
+            id: -1,
+            username: '',
+            password: '',
+            firstname: '',
+            lastname: '',
+            roleid: 0,
+            email: ''   
+        }
+
+        return dispatch({
+            type: ADD_USER,
+            payload: create
+        });
+    }
+
 }
 
 export const loginUser = (user:UserLogin) => async (dispatch: any) => {
@@ -45,12 +69,14 @@ export const loginUser = (user:UserLogin) => async (dispatch: any) => {
 
         //2. Is to handle the logged in user, or reject the login attempt
         loggedIn = {
-            userId: res.data.userId,
+
+            id: res.data.userId,
             username: res.data.username,
             password: res.data.password,
-            firstName: res.data.firstName,
-            lastName: res.data.lastName,
-            roleId: res.data.roleId,
+            firstname: res.data.firstName,
+            lastname: res.data.lastName,
+            roleid: res.data.roleId,
+
             email: res.data.email   
         }
 
@@ -62,12 +88,14 @@ export const loginUser = (user:UserLogin) => async (dispatch: any) => {
     catch(e){
 
         loggedIn = {
-            userId: -1,
+
+            id: -1,
             username: '',
             password: '',
-            firstName: '',
-            lastName: '',
-            roleId: 0,
+            firstname: '',
+            lastname: '',
+            roleid: 0,
+
             email: ''   
         }
 

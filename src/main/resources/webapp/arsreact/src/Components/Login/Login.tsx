@@ -3,6 +3,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import { loginUser } from '../../Actions/UserActions';
 import {useHistory, Link} from 'react-router-dom';
 
+import "./Login.css";
+
+
 export const Login:React.FC<any> = () => {
 
     //First we will pull in the application level state with useSelector
@@ -20,7 +23,7 @@ export const Login:React.FC<any> = () => {
     useEffect(() => {
         console.log(appState);
         if(appState.user.id > 0){
-            history.push('/home');
+            history.push('/book');
         }
     }, [appState]);
 
