@@ -7,3 +7,7 @@ export interface IUser {
     roleid: number,
     email: string
 }
+
+export type AppState = {
+    user: IUser
+}

@@ -4,6 +4,8 @@ import './App.css';
 import { Book } from './Components/Flight/Book';
 import './Components/Landing/Main'
 import { Main } from './Components/Landing/Main';
+import { Login } from './Components/Login/Login';
+import { Register } from './Components/Register/Register';
 
 function App() {
 
@@ -13,6 +15,8 @@ function App() {
         <Switch>
           <Route exact path="/"><Main /></Route>
           <Route exact path="/book"><Book /></Route>
+          <Route exact path="/login"><Login /></Route>
+          <Route exact path="/register"><Register /></Route>
         </Switch>
       </Router>
     </div>
