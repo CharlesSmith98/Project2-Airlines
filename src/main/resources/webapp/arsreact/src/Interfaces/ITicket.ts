@@ -1,10 +1,10 @@
 import { IFlight } from "./IFlight";
 import { IUser } from "./IUser";
+import { ISeat } from "./ISeat";
 
-// Action TBD: Adjust fields for Readibility
 export interface ITicket {
-    ticketId: number;
-    flight: IFlight;
-    seatId: number;
-    user: IUser;
+    id: number,
+    flight: IFlight,
+    user: IUser,
+    seat: ISeat
 }
