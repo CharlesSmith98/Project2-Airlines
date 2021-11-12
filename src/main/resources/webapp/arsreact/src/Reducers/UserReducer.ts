@@ -1,8 +1,11 @@
+
 import {IUser} from "../Interfaces/IUser";
+
 //Later we will import our action types
 import {LOGIN_USER, ADD_USER} from '../Actions/ActionTypes';
 
 let initialState:IUser = {
+
     id: 0,
     username: '',
     password: '',
