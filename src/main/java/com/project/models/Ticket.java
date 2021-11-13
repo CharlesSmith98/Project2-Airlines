@@ -41,8 +41,6 @@ public class Ticket {
 	public Ticket() {
 		this.ticketId = 0;
 	}
-	
-	
 
 	public Ticket(int ticketId, User user, Seat seat, Flight flight) {
 		super();
@@ -51,8 +49,6 @@ public class Ticket {
 		this.seat = seat;
 		this.flight = flight;
 	}
-
-
 
 	public int getTicketId() {
 		return ticketId;

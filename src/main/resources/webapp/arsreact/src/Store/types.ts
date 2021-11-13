@@ -1,11 +1,11 @@
 export interface IUser {
-    id: number,
+    userId: number,
     username: string,
     password: string,
-    firstname: string,
-    lastname: string,
-    roleid: number,
-    email: string
+    firstName: string,
+    lastName: string,
+    roleId: number,
+    email: string   
 }
 
 export type AppState = {

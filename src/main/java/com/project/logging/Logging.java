@@ -1,6 +1,6 @@
 package com.project.logging;
 
-import org.apache.log4j.Logger;;
+import org.apache.log4j.Logger;
 
 public class Logging {
 	
