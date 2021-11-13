@@ -3,39 +3,38 @@
  * changed to provide more detailed information to the user.
  * 
  */
-
 import { useEffect, useState } from "react";
 import { ITicket } from "../Interfaces/ITicket";
 
 export const TicketDisplay: React.FC<ITicket>= (ticket:ITicket) => {
     
-    const {ticketId, flightId, seatId, userId} = ticket;
+    const {id, flight, seat, user} = ticket;
     
-    let [ticketNum, setTicketId] = useState(0);
-    let [flightNum, setFlightId] = useState(0);
-    let [seatNum, setSeatId] = useState(0);
-    let [userNum, setUserId] = useState(0);
+    let [ticketId, setTicketId] = useState(id);
+    let [ticketFlight, setTicketFlight] = useState(flight);
+    let [ticketSeat, setTicketSeat] = useState(seat);
+    let [ticketUser, setTicketUser] = useState(user);
 
     useEffect(() => {
         setTicketId(ticketId);
-        setFlightId(flightId);
-        setSeatId(seatId);
-        setUserId(userId);
-    }, [ticketNum])
+        setTicketFlight(ticketFlight)
+        setTicketSeat(ticketSeat);
+        setTicketUser(ticketUser);
+    }, [ticketId])
 
     return(
         <div>
             <form>
                 <fieldset>
                     <legend>Ticket</legend>
-                    <label htmlFor="tVal">Ticket Number: </label>
-                    <input type="text" name="tVal" readOnly value={ticketNum}/>
-                    <label htmlFor="fVal">Flight Number: </label>
-                    <input type="text" name="fVal" readOnly value={flightNum}/>
-                    <label htmlFor="sVal">Seat Number: </label>
-                    <input type="text" name="sVal" readOnly value={seatNum}/>
-                    <label htmlFor="uVal">Passenger ID: </label>
-                    <input type="text" name="uVal" readOnly value={userNum}/>
+                    <label htmlFor="ticketNum">Ticket Number: </label>
+                    <input type="text" name="ticketNum" readOnly value={ticketId}/>
+                    <label htmlFor="flightName">Flight: </label>
+                    <input type="text" name="flightName" readOnly value={ticketFlight.name}/>
+                    <label htmlFor="seatNum">Seat Number: </label>
+                    <input type="text" name="seatNum" readOnly value={ticketSeat.seatId}/>
+                    <label htmlFor="userNum">Passenger: </label>
+                    <input type="text" name="userNum" readOnly value={`${ticketUser.firstName} ${ticketUser.lastName}`}/>
                 </fieldset>
             </form>
         </div>
