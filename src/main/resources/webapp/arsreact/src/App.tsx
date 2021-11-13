@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
 import { Book } from './Components/Flight/Book';
@@ -7,25 +6,24 @@ import './Components/Landing/Main'
 import { Main } from './Components/Landing/Main';
 import { Login } from './Components/Login/Login';
 import { Register } from './Components/Register/Register';
+import { TicketDisplay } from './Components/TicketDisplay';
+import { ITicket } from './Interfaces/ITicket';
 
 function App() {
 
 
   return (
     <div className="grad h-100">
-      <Router>
+      <Router> 
         <Switch>
           <Route exact path="/"><Main /></Route>
+          <Route exact path="/login"><Login /></Route>          
+          <Route exact path="/registration"><Register /></Route>
           <Route exact path="/book"><Book /></Route>
-          <Route exact path="/login"><Login /></Route>
-          <Route exact path="/register"><Register /></Route>
         </Switch>
       </Router>
     </div>
   );
-  
 }
 
 export default App;
-
-

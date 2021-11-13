@@ -8,6 +8,3 @@ export interface IUser {
     email: string
 }
 
-export type AppState = {
-    user: IUser
-}
