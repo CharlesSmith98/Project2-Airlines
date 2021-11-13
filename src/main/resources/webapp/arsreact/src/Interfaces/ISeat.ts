@@ -1,6 +1,7 @@
 
 export interface ISeat {
-    seatId: number;
-    seatAvailable: boolean;
-    flightId: number;
+
+    seatId: number,
+    flight: IFlight,
+    available: boolean
 }
