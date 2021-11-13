@@ -49,9 +49,11 @@ export const TicketDisplay: React.FC<ITicket>= (ticket:ITicket) => {
                         <label htmlFor="flightName">Flight Name:</label><br />
                         <input type="text" name="flightName" readOnly value={ticketFlight.name}/><br />
                         <label htmlFor="origin">From:&nbsp;</label>
-                        <input type="text" name="origin" readOnly value={ticketFlight.origin}/><br />
+
+                        <input type="text" name="origin" readOnly value={ticketFlight.origin.name}/><br />
                         <label htmlFor="destination">To:&nbsp;</label>
-                        <input type="text" name="destination" readOnly value={ticketFlight.destination}/>
+                        <input type="text" name="destination" readOnly value={ticketFlight.destination.name}/>
+
                         <div className="col-md-6">
                             <label htmlFor="seatNum">Seat Number: </label><br />
                             <input type="text" name="seatNum" readOnly value={ticketSeat.seatId}/>

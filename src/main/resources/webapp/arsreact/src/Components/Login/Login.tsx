@@ -41,6 +41,8 @@ export const Login:React.FC<any> = () => {
         await dispatch(
             loginUser({username, password})
         );
+            
+        window.location.href = '/book';
     }
 
     return (
