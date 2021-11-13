@@ -43,6 +43,11 @@ public class FlightController {
 		return fs.getFlightByName(name);		
 	}
 	
+	@GetMapping(value="/get/trip")
+	public List<Flight> getByTrip(@RequestParam("orgn") String orgn, @RequestParam("dest") String dest) {
+		return fs.getFlightsByTrip(orgn, dest);
+	}
+	
 	@PostMapping(value="/create")
 	public Flight createFlight(@RequestBody Flight f) {
 		System.out.println("From Post Flight Controller "+f);
