@@ -23,7 +23,11 @@ export const Login:React.FC<any> = () => {
     useEffect(() => {
         console.log(appState);
         if(appState.user.id > 0){
-            history.push('/book');
+            window.location.assign("/book");
+            //history.push('/book');   
+        }
+        else {
+            alert("Username or password incorrect");
         }
     }, [appState]);
 
@@ -44,7 +48,8 @@ export const Login:React.FC<any> = () => {
     }
 
     return (
-        <form>
+        <div className="login">
+            <form>
                 <h3>Sign In</h3>
 
                 <div className="form-group">
@@ -61,6 +66,7 @@ export const Login:React.FC<any> = () => {
                 <button type="submit" className="btn btn-primary btn-block" onClick={login}>Login</button>
                 
             </form>
+        </div> 
     );
   
 
