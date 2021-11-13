@@ -21,22 +21,6 @@ export const TicketDisplay: React.FC<ITicket>= (ticket:ITicket) => {
     }, [ticketId])
 
     return(
-<<<<<<< HEAD
-        <div>
-            <form>
-                <fieldset>
-                    <legend>Ticket</legend>
-                    <label htmlFor="ticketNum">Ticket Number: </label>
-                    <input type="text" name="ticketNum" readOnly value={ticketId}/>
-                    <label htmlFor="flightName">Flight: </label>
-                    <input type="text" name="flightName" readOnly value={ticketFlight.name}/>
-                    <label htmlFor="seatNum">Seat Number: </label>
-                    <input type="text" name="seatNum" readOnly value={ticketSeat.seatId}/>
-                    <label htmlFor="userNum">Passenger: </label>
-                    <input type="text" name="userNum" readOnly value={`${ticketUser.firstName} ${ticketUser.lastName}`}/>
-                </fieldset>
-            </form>
-=======
         <div className="container pt-5">
             <div className="container bg-white shadow p-3 mb-5 bg-body rounded">
                 <form className="needs-validation" noValidate>
@@ -65,7 +49,6 @@ export const TicketDisplay: React.FC<ITicket>= (ticket:ITicket) => {
                     </fieldset>
                 </form>
             </div>
->>>>>>> master
         </div>
     );
 }
