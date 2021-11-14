@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.models.Flight;
+import com.project.models.Seat;
 import com.project.services.FlightService;
+import com.project.services.SeatService;
 
 @RestController
 @RequestMapping("/flight")
@@ -21,10 +23,12 @@ import com.project.services.FlightService;
 public class FlightController {
 	
 	private FlightService fs;
+	private SeatService ss;
 	
 	@Autowired
-	public FlightController(FlightService fs) {
+	public FlightController(FlightService fs, SeatService ss) {
 		this.fs = fs;
+		this.ss = ss;
 	} 
 	
 	@GetMapping(value="/get")
@@ -33,9 +37,20 @@ public class FlightController {
 		return fs.getAllFlight();
 	}
 
-	@GetMapping(value="/get/id")
-	public Flight getByFlightId(@RequestParam("id") int id) {		
-		return fs.getFlightById(id);		
+	@GetMapping(value="/getby")
+	public Flight getByFlightId(@RequestParam("id") int id) {	
+		Flight f = fs.getFlightById(id);
+		boolean isEmpty = ss.getAllSeatsByFlight(f.getId()).isEmpty();
+		if(isEmpty == true) {
+			Seat s = null;
+			for (int i = 0; i < f.getSeats(); i++) {
+				s = new Seat();
+				s.setFlight(f);
+				s.setSeatAvailable(true);
+				ss.createSeat(s);
+			}
+		}
+		return f;		
 	}
 	
 	@GetMapping(value="/get/name")

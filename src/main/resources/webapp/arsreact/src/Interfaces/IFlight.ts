@@ -1,7 +1,7 @@
 import { ICity } from "./ICity";
 
-export interface IFlight{
-    flightId: number,
+export interface IFlight {
+    id: number,
     name: string,
     takeoff: Date,
     eta: Date,

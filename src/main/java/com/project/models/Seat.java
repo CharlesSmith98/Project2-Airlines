@@ -77,12 +77,20 @@ public class Seat {
 		this.seatAvailable = seatAvailable;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "Seat [id=" + id + ", flight=" + flight.getId() + ", seatAvailable=" + seatAvailable + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Seat [id=");
+		builder.append(id);
+		builder.append(", flight=");
+		builder.append(flight);
+		builder.append(", seatAvailable=");
+		builder.append(seatAvailable);
+		builder.append("]");
+		return builder.toString();
 	}
+
+
 
 }
 

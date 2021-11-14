@@ -47,8 +47,17 @@ public class TicketController {
 		System.out.println(ticketJson);
 		Ticket t = tjp.parse(ticketJson);
 		System.out.println(t);
+//		return t;
 		return tService.createTicket(t);
 	}
+	
+//	@PostMapping(value="/create")
+//	public Ticket createTicket(@RequestBody Ticket t) {
+//		System.out.println("From /create method");
+//		System.out.println(t);
+////		return t;
+//		return tService.createTicket(t);
+//	}
 	
 	@GetMapping(value="/")
 	public List<Ticket> getAllTickets() {

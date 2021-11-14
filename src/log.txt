@@ -1,0 +1,45 @@
+2021-11-13 22:42:14 INFO  Logging:67 - Seat updated
+2021-11-13 22:52:47 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:48 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:48 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:48 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:48 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:48 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:48 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:48 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:48 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:48 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:48 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:48 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:49 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:49 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:49 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:49 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:49 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:49 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:49 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:49 INFO  Logging:36 - Successfully created seat.
+2021-11-13 22:52:52 INFO  Logging:67 - Seat updated
+2021-11-13 23:23:19 INFO  Logging:67 - Seat updated
+2021-11-14 01:05:47 INFO  Logging:67 - Seat updated
+2021-11-14 11:49:38 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:38 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:38 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:38 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:38 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:38 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:38 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:39 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:39 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:39 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:39 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:39 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:39 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:39 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:39 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:39 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:39 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:40 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:40 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:40 INFO  Logging:36 - Successfully created seat.
+2021-11-14 11:49:42 INFO  Logging:67 - Seat updated

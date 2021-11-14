@@ -48,7 +48,7 @@ public class FlightService {
 		Seat s = null;
 		for (int i = 0; i < nf.getSeats(); i++) {
 			s = new Seat();
-			s.setFlight(f); // This needs to be rename in Seat model by Suzanna
+			s.setFlight(nf);
 			s.setSeatAvailable(true);
 			sr.save(s);
 		}
@@ -56,7 +56,7 @@ public class FlightService {
 	}
 
 	public void populateSeats(Flight f) {
-		if (sr.findByFlight(f.getId()).isEmpty()) {
+		if (sr.findByFlightId(f.getId()).isEmpty()) {
 			Seat s = null;
 			for (int i = 0; i < f.getSeats(); i++) {
 				s = new Seat();
