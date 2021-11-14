@@ -1,10 +1,11 @@
 import {applyMiddleware, createStore} from 'redux';
 import thunk from 'redux-thunk';
+import { AppState } from '../Interfaces/IUser';
 
 //We will create this in a second
 import reducer from '../Reducers';
 
-import {AppState} from '../Interfaces/IUser';
+
 
 const initialState:AppState = {
     user: {

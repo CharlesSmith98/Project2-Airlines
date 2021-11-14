@@ -5,15 +5,19 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.models.Flight;
 import com.project.models.Ticket;
 import com.project.models.User;
+import com.project.services.FlightService;
 import com.project.services.TicketService;
 import com.project.util.FlightJsonParser;
 import com.project.util.TicketJsonParser;
@@ -52,28 +56,25 @@ public class TicketController {
 		return tService.getAllTickets();
 	}
 	
-	@PostMapping(value="/delete")
-	public Ticket deleteTicket(LinkedHashMap<String, Object> ticketJson) {
-		System.out.println(ticketJson);
-		Ticket t = tjp.parse(ticketJson);
+	@GetMapping(value="/id")
+	public Ticket getTicketById(@RequestParam("id") int id) {
+		return tService.getTicketById(id);
+	}
+	
+	@DeleteMapping(value="/id")
+	public Ticket deleteTicket(@RequestParam("id") int id) {
+		Ticket t = tService.getTicketById(id);
 		if(tService.deleteTicket(t))
 			return t;
 		
 		return null;
 	}
 	
-	@PostMapping(value="/get/user")
-	public List<Ticket> getTicketsByUser(@RequestBody LinkedHashMap<String, Object> userJson) {
-		User user = ujp.parse(userJson);
-		return tService.getTicketsByUser(user);
-	}
-	
-	@PostMapping(value="/get/flight")
-	public List<Ticket> getTicketsByFlight(@RequestBody LinkedHashMap<String, Object> flightJson) {
-		Flight flight = fjp.parse(flightJson);
-		for (Ticket tk : tService.getTicketsByFlight(flight))
+	@GetMapping(value="/flight/id")
+	public List<Ticket> getTicketsByFlight(@RequestParam("id") int flightId) {
+		for (Ticket tk : tService.getTicketsByFlight(flightId))
 			System.out.println(tk);
-		return tService.getTicketsByFlight(flight);
+		return tService.getTicketsByFlight(flightId);
 	}
 	
 	/*  NOT WORKING WILL FIX LATER

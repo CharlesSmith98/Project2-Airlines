@@ -21,13 +21,13 @@ export const Login:React.FC<any> = () => {
     let [password, setPassword] = useState('');
 
     useEffect(() => {
-        console.log(appState);
         if(appState.user.id > 0){
             window.location.assign("/book");
-            //history.push('/book');   
-        }
-        else {
-            alert("Username or password incorrect");
+
+        } else if(appState.user.id < 0){
+            alert("Username or password incorrect ");
+            window.location.assign("/login");
+
         }
     }, [appState]);
 

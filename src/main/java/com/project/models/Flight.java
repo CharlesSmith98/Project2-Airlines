@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-@Table()
+@Table(name="flight")
 public class Flight {
 
 	@Id
@@ -34,14 +34,14 @@ public class Flight {
 	@Column(name="eta")
 	private Date eta;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="destination_id")
-	@JsonIgnore
+//	@JsonIgnore
 	private City destination;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="origin_id")
-	@JsonIgnore
+//	@JsonIgnore
 	private City origin;
 	
 	@Column(name="seats")
