@@ -49,7 +49,7 @@ export const Login: React.FC<any> = () => {
 
             <div className="container bg-white shadow p-3 mb-5 bg-body rounded">
 
-                <h1 className="fw-light">Login</h1>
+                <h1 className="fw-light">Login to your account</h1>
                 <hr />
                 <form>
 

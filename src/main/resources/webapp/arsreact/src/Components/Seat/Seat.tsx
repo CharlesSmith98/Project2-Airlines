@@ -71,10 +71,11 @@ export const SeatDisplay: React.FC<IFlight> = (flight: IFlight) => {
 
       <div className="container bg-white shadow p-3 mb-5 bg-body rounded">
 
-        <h1 className="fw-light">Select a seat</h1>
+        <h1 className="fw-light">Wait to select a seat</h1>
         <hr />
         <div className="second">
           {firstSeat.map(({ id, seatAvailable }, idx) => (
+
             <button onClick={updateSeat} className="btn btn-secondary m-1" data-available={seatAvailable} key={idx} data-id={id}>
 
               {seatAvailable ? id : 'X'}

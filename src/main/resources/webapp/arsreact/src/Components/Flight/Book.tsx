@@ -8,7 +8,7 @@ import "../Flight/Book.css";
 import { TicketDisplay } from "../TicketDisplay";
 import { IUser } from "../../Interfaces/IUser";
 
-export const Book: React.FC<any> = () => { 
+export const Book: React.FC<any> = () => {
 
     const appState = useSelector<any, any>((state) => state);
     const dispatch = useDispatch();
@@ -42,8 +42,6 @@ export const Book: React.FC<any> = () => {
     //     // }
     // }, [appState]);
 
-    const h = function (e: any) { setOrigin(e.target.value) }; 
-
     function search(event: any) {
         event.preventDefault();
         axios('http://localhost:8080/flight/get/trip?orgn=' + origin + '&dest=' + destination)
@@ -69,78 +67,82 @@ export const Book: React.FC<any> = () => {
         history.push({ pathname: '/seat', state: flights[index] });
     }
 
+    function logout() {
+        window.localStorage.clear();
+        window.location.reload();
+        window.location.replace('/');
+    }
+
     return (
-        <div className="container pt-5">
-            <div className="container bg-white shadow p-3 mb-5 bg-body rounded">
-                <form className="row g-3 needs-validation" noValidate>
-                    <div className="col-md-6">
-                        <label htmlFor="originDataList" className="form-label">Origin</label>
-                        <input className="form-control" list="datalistOrigin" id="originDataList" onChange={originChange} placeholder="Type to search..." />
-                        <datalist id="datalistOrigin">
-                            {
-                                cities.map((item, idx) => {
-                                    return <option key={idx} value={item.name} />
-                                })
-                            }
-                        </datalist>
-                        <div className="valid-feedback">
-                            Looks good!
-                        </div>
+        <>
+            <nav className="navbar navbar-light bg-light">
+                <div className="container-fluid">
+                    <a className="navbar-brand">Aether Airlines</a>
+                    <div className="d-flex">
+                        <button className="btn btn-outline-primary" type="submit" onClick={logout}>logout</button>
                     </div>
-                    <div className="col-md-6">
-                        <label htmlFor="destinationDataList" className="form-label">Destination</label>
-                        <input className="form-control" list="datalistDestination" id="destinationDataList" onChange={destChange} placeholder="Type to search..." />
-                        <datalist id="datalistDestination">
-                            {
-                                cities.map((item, idx) => {
-                                    return <option key={idx} value={item.name} />
-                                })
-                            }
-                        </datalist>
-
-                        <div className="valid-feedback">
-                            Looks good!
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <label htmlFor="validationCustom03" className="form-label">Departure</label>
-                        <input type="Date" className="form-control" id="validationCustom03" required />
-                        <div className="valid-feedback">
-                            Looks good!
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <label htmlFor="validationCustom04" className="form-label">Return</label>
-                        <input type="Date" className="form-control" id="validationCustom04" required />
-                        <div className="invalid-feedback">
-                            Please provide a valid city.
-                        </div>
-                    </div>
-
-                    <div className="col-12">
-                        <button className="btn btn-primary" type="submit" onClick={search}>Search</button>
-                    </div>
-                </form>
-            </div>
-            <hr />
-            <div className="container">
-                {
-                    flights.map((itm, idx) => {
-                        return (
-                            <div className="list-group my-1" onClick={clickFlight} key={itm.id} data-name={itm.name} data-index={idx}>
-                                <a href="/ticket" className="list-group-item list-group-item-action active" aria-current="true">
-                                    <div className="d-flex w-100 justify-content-between">
-                                        <h5 className="mb-1">{itm.origin.name} - {itm.destination.name}</h5>
-                                        <small>Fligh name: {itm.name}</small>
-                                    </div>
-                                    <p className="mb-1">Take off at: {new Date(itm.takeoff).toUTCString()}</p>
-                                    <small>ETA: {new Date(itm.eta).getHours()} hours</small>
-                                </a>
+                </div>
+            </nav>
+            <div className="container pt-5">
+                <div className="container bg-white shadow p-3 mb-5 bg-body rounded">
+                <h1 className="fw-light">Search for a flight</h1>
+                <hr />
+                    <form className="row g-3 needs-validation" noValidate>
+                        <div className="col-md-6">
+                            <label htmlFor="originDataList" className="form-label">Origin</label>
+                            <input className="form-control" list="datalistOrigin" id="originDataList" onChange={originChange} placeholder="Click to select..." />
+                            <datalist id="datalistOrigin">
+                                {
+                                    cities.map((item, idx) => {
+                                        return <option key={idx} value={item.name} />
+                                    })
+                                }
+                            </datalist>
+                            <div className="valid-feedback">
+                                Looks good!
                             </div>
-                        );
-                    })
-                }
+                        </div>
+                        <div className="col-md-6">
+                            <label htmlFor="destinationDataList" className="form-label">Destination</label>
+                            <input className="form-control" list="datalistDestination" id="destinationDataList" onChange={destChange} placeholder="Click to select..." />
+                            <datalist id="datalistDestination">
+                                {
+                                    cities.map((item, idx) => {
+                                        return <option key={idx} value={item.name} />
+                                    })
+                                }
+                            </datalist>
+
+                            <div className="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <div className="col-12">
+                            <button className="btn btn-primary" type="submit" onClick={search}>Search</button>
+                        </div>
+                    </form>
+                </div>
+                <hr />
+                <div className="container">
+                    {
+                        flights.map((itm, idx) => {
+                            return (
+                                <div className="list-group my-1" onClick={clickFlight} key={itm.id} data-name={itm.name} data-index={idx}>
+                                    <a href="/ticket" className="list-group-item list-group-item-action active" aria-current="true">
+                                        <div className="d-flex w-100 justify-content-between">
+                                            <h5 className="mb-1">{itm.origin.name} - {itm.destination.name}</h5>
+                                            <small>Fligh name: {itm.name}</small>
+                                        </div>
+                                        <p className="mb-1">Take off at: {new Date(itm.takeoff).toUTCString()}</p>
+                                        <small>ETA: {new Date(itm.eta).getHours()} hours</small>
+                                    </a>
+                                </div>
+                            );
+                        })
+                    }
+                </div>
             </div>
-        </div>
+        </>
     );
 }

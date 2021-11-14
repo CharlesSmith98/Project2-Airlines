@@ -4,13 +4,14 @@
 
 import axios from "axios";
 import { SyntheticEvent, useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useHistory } from "react-router";
 import { ITicket } from "../Interfaces/ITicket";
 
 export const TicketDisplay: React.FC<ITicket> = (ticket: ITicket) => {
 
     let location = useLocation<ITicket>();
     const { id, flight, seat, user } = location.state;
+    let history = useHistory();
 
     let [ticketId, setTicketId] = useState(id);
     let [ticketFlight, setTicketFlight] = useState(flight);
@@ -35,6 +36,8 @@ export const TicketDisplay: React.FC<ITicket> = (ticket: ITicket) => {
         console.log(theTicket);
         let res = await axios.post('http://localhost:8080/tickets/create', theTicket);
         console.log(res.data);
+        alert('Your ticket number is: ' + res.data.ticketId);
+        history.push('/book');
     }
 
     return (
