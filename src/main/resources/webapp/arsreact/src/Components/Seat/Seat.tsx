@@ -31,10 +31,10 @@ import "../Seat/Seat.css";
 
     let [seats, setSeats] = useState<ISeat[]>([]);
 
-    const {id} = flight;
+    const {flightId} = flight;
 
     async function getData(){
-      let res = await axios.get('http://localhost:8080/seat/get/flight/seats?id=' + id);
+      let res = await axios.get('http://localhost:8080/seat/get/flight/seats?id=' + flightId);
       console.log(res.data);
       setSeats(res.data);
     }
@@ -50,8 +50,8 @@ import "../Seat/Seat.css";
         return(
          
           <>
-          {firstSeat.map(({ seatId, seatAvailable }) => (
-              <button onClick= {updateSeat} className = "seat1" data-available={seatAvailable} data-id={seatId}>
+          {firstSeat.map(({ seatId, available }) => (
+              <button onClick= {updateSeat} className = "seat1" data-available={available} data-id={seatId}>
                 
                 {seatId} 
 
@@ -59,9 +59,9 @@ import "../Seat/Seat.css";
           ))}
           
         <div className = "second">
-           {secondSeat.map(({ seatId, seatAvailable }) => (
+           {secondSeat.map(({ seatId, available }) => (
             
-            <button onClick= {updateSeat} className = "seat2" data-available={seatAvailable} data-id={seatId}>
+            <button onClick= {updateSeat} className = "seat2" data-available={available} data-id={seatId}>
               {seatId}
               </button>
         ))}

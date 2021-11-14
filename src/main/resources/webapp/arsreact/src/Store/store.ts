@@ -1,6 +1,6 @@
 import {applyMiddleware, createStore} from 'redux';
 import thunk from 'redux-thunk';
-import { AppState } from '../Interfaces/AppState';
+import { AppState } from '../Interfaces/IUser';
 
 //We will create this in a second
 import reducer from '../Reducers';
@@ -17,9 +17,6 @@ const initialState:AppState = {
         roleid: 0,
         email: ''   
     },
-    ticket:[],
-    flight:[],
-    seat:[],
 }
 
 const middleWare = [thunk];
