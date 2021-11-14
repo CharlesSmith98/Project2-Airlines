@@ -52,7 +52,7 @@ public class SeatService {
 	
 	public List<Seat> getAllSeatsByFlight(int id){
 		try {
-			return sDao.findByFlight(id);
+			return sDao.findByFlightId(id);
 		} catch(Exception e) {
 			return new ArrayList<Seat>();
 		}

@@ -1,6 +1,5 @@
 import axios, { Axios } from "axios";
 import React, { useEffect, useState } from "react";
-import { Flight } from "../../interfaces";
 import { Footer } from "./Footer";
 import './Main.css';
 
@@ -22,11 +21,10 @@ export const Main: React.FC<any> = () => {
                     </div>
                 </div>
             </div>
-                <div className="">
-                    <img src="craft.png" className="img-fluid" alt="craft image" width="700" height="500" loading="lazy" />
-                </div>
+            <div className="">
+                <img src="craft.png" className="img-fluid" alt="craft image" width="700" height="500" loading="lazy" />
+            </div>
 
-            <Footer />
         </div>
 
     );

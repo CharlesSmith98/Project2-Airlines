@@ -13,7 +13,7 @@ public interface SeatRepo extends JpaRepository<Seat, Integer>{
 	Seat findById(int id);
 	List<Seat> findAll();
 	
-	@Query("from Seat s where s.flight = :id")
-	List<Seat> findByFlight(@Param("id") int id);
-	
+//	@Query("from Seat s where s.flight = :id")
+//	List<Seat> findByFlight(@Param("id") int id);
+	List<Seat> findByFlightId(int id);
 }

@@ -26,6 +26,7 @@ public class TicketService {
 	
 	
 	public Ticket createTicket(Ticket t) {
+		System.out.println(t);
 		try {
 			tDao.save(t);
 			return t;
@@ -33,6 +34,7 @@ public class TicketService {
 			e.printStackTrace();
 			return null;
 		}
+//		return t;
 	}
 	
 	public Ticket updateTicket(Ticket t) {

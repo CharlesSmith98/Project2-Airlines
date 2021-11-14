@@ -1,9 +1,9 @@
-
 import { IFlight } from "./IFlight";
 
 export interface ISeat {
-    seatId: number,
+
+    id: number,
     flight: IFlight,
-    available: boolean
+    seatAvailable: boolean
 
 }

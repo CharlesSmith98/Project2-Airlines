@@ -23,19 +23,19 @@ public class Ticket {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int ticketId;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.MERGE)//, fetch=FetchType.LAZY
 	@JoinColumn(name="user_id")
-	@JsonIgnore
+//	@JsonIgnore
 	private User user;
 	
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="seat_id")
-	@JsonIgnore
+//	@JsonIgnore
 	private Seat seat;
 	
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="flight_id")
-	@JsonIgnore
+//	@JsonIgnore
 	private Flight flight;
 	
 	public Ticket() {
@@ -84,7 +84,18 @@ public class Ticket {
 
 	@Override
 	public String toString() {
-		return "Ticket [ticketId=" + ticketId + ", user=" + user.getUserId() + ", seat=" + seat.getId() + ", flight=" + flight.getId() + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Ticket [ticketId=");
+		builder.append(ticketId);
+		builder.append(", user=");
+		builder.append(user);
+		builder.append(", seat=");
+		builder.append(seat);
+		builder.append(", flight=");
+		builder.append(flight);
+		builder.append("]");
+		return builder.toString();
 	}
+
 	
 }

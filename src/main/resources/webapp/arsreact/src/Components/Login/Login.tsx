@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../Actions/UserActions';
-import {useHistory, Link} from 'react-router-dom';
+import { useHistory, Link, Redirect } from 'react-router-dom';
 
 import "./Login.css";
 
 
-export const Login:React.FC<any> = () => {
+export const Login: React.FC<any> = () => {
 
     //First we will pull in the application level state with useSelector
     const appState = useSelector<any, any>((state) => state);
@@ -21,19 +21,15 @@ export const Login:React.FC<any> = () => {
     let [password, setPassword] = useState('');
 
     useEffect(() => {
-        if(appState.user.id > 0){
-            window.location.assign("/book");
-
-        } else if(appState.user.id < 0){
-            alert("Username or password incorrect ");
-            window.location.assign("/login");
-
+        if (appState.user.id > 0) {
+            history.push({pathname: '/book', state: appState})
+            console.log(appState);
         }
     }, [appState]);
 
     //Update the username or password state with whatever is typed in the fields
-    const handleChange = (e:any) => {
-        if(e.target.name === 'username'){
+    const handleChange = (e: any) => {
+        if (e.target.name === 'username') {
             setUsername(e.target.value);
         } else {
             setPassword(e.target.value);
@@ -41,33 +37,42 @@ export const Login:React.FC<any> = () => {
     }
 
     //We need a function to actually handle the login
-    const login = async () => {
+    const login = async (event: any) => {
+        event.preventDefault();
         await dispatch(
-            loginUser({username, password})
+            loginUser({ username, password })
         );
     }
 
     return (
-        <div className="login">
-            <form>
-                <h3>Sign In</h3>
+        <div className="container pt-5">
 
-                <div className="form-group">
-                    <label>Username</label>
-                    <input type="text" className="form-control" placeholder="Enter username" name="username" onChange={handleChange} id="username" />
-                </div>
+            <div className="container bg-white shadow p-3 mb-5 bg-body rounded">
 
-                <div className="form-group">
-                    <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" name="password" onChange={handleChange} id="password"/>
-                </div>
+                <h1 className="fw-light">Login</h1>
+                <hr />
+                <form>
 
-                
-                <button type="submit" className="btn btn-primary btn-block" onClick={login}>Login</button>
-                
-            </form>
-        </div> 
+                    <div className="form-group">
+                        <label>Username</label>
+                        <input type="text" className="form-control" placeholder="Enter username" name="username" onChange={handleChange} id="username" />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input type="password" className="form-control" placeholder="Enter password" name="password" onChange={handleChange} id="password" />
+                    </div>
+
+                    <hr />
+                    <button type="submit" className="btn btn-primary btn-block" onClick={login}>Login</button>
+
+                </form>
+            </div>
+            <div className="text-center">
+                <img src="travel.jpeg" className="img-fluid" alt="craft image" width="1000" height="700" loading="lazy" />
+            </div>
+        </div>
     );
-  
+
 
 }

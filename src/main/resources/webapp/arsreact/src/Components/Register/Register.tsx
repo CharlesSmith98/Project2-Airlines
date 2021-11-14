@@ -3,8 +3,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import { createUser } from '../../Actions/UserActions';
 import {useHistory, Link} from 'react-router-dom';
 
-
-
 export const Register:React.FC<any> = () => {
 
     //First we will pull in the application level state with useSelector
@@ -24,16 +22,10 @@ export const Register:React.FC<any> = () => {
     let [email, setEmail] = useState('');
 
     useEffect(() => {
-        if(appState.user.id==1) {
-        window.location.assign("/login");
-        alert("User was created");
+        console.log(appState);
+        if(appState.user.id > 0){
+            history.push('/sign-in');
         }
-        else if(appState.user.id==-1){
-            window.location.assign("/registration");
-            alert("Username or email already registered to a user");
-            
-        }
-        
     }, [appState]);
 
     //Update the username or password state with whatever is typed in the fields

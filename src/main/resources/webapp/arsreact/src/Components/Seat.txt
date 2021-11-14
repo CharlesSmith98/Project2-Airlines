@@ -1,9 +1,9 @@
 // @ts-ignore
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
-import { ISeat } from '../../Interfaces/ISeat';
-import { IFlight } from '../../Interfaces/IFlight';
+import { useLocation } from "react-router";
+import { IFlight } from "../../Interfaces/IFlight";
+import { ISeat } from "../../Interfaces/ISeat";
 import "../Seat/Seat.css";
 
 
@@ -32,11 +32,16 @@ import "../Seat/Seat.css";
 
     let [seats, setSeats] = useState<ISeat[]>([]);
 
-    const {id} = flight;
+    const location = useLocation<IFlight>();
+    flight = location.state;
+    const {flightId} = flight;
 
     async function getData(){
-      let res = await axios.get('http://localhost:8080/seat/get/flight/seats?id=' + id);
-      console.log(res.data);
+      let res = await axios.get('http://localhost:8080/flight/getby?id=' + flightId);
+      console.log(res.data); //selected flight
+      let flight:IFlight = res.data;
+      res = await axios('http://localhost:8080/seat/get/flight/seats?id=' + flight.flightId);
+      console.log(res.data); //number of seats
       setSeats(res.data);
     }
 
@@ -51,8 +56,8 @@ import "../Seat/Seat.css";
         return(
          
           <>
-          {firstSeat.map(({ seatId, seatAvailable }) => (
-              <button onClick= {updateSeat} className = "seat1" data-available={seatAvailable} data-id={seatId}>
+          {firstSeat.map(({ seatId, available }) => (
+              <button onClick= {updateSeat} className = "seat1" data-available={available} data-id={seatId}>
                 
                 {seatId} 
 
@@ -60,9 +65,9 @@ import "../Seat/Seat.css";
           ))}
           
         <div className = "second">
-           {secondSeat.map(({ seatId, seatAvailable }) => (
+           {secondSeat.map(({ seatId, available }) => (
             
-            <button onClick= {updateSeat} className = "seat2" data-available={seatAvailable} data-id={seatId}>
+            <button onClick= {updateSeat} className = "seat2" data-available={available} data-id={seatId}>
               {seatId}
               </button>
         ))}
@@ -71,3 +76,5 @@ import "../Seat/Seat.css";
 
         );
     }
+
+
