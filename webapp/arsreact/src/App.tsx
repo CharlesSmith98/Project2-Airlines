@@ -14,7 +14,7 @@ function App() {
         <Switch>
           <Route exact path="/"><Main /></Route>
           <Route exact path="/book"><Book /></Route>
-          <Route exact path='/ideas/:id/'><TicketDisplay /></Route>
+          <Route exact path='/idea/:id/'><TicketDisplay /></Route>
         </Switch>
       </Router>
     </div>
