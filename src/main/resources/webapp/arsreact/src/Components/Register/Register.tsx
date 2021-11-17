@@ -25,13 +25,12 @@ export const Register: React.FC<any> = () => {
 
     useEffect(() => {
         if (appState.user.id == 1) {
-            history.push("/login");
+            window.location.assign("/login");
             alert("User was created");
         }
         else if (appState.user.id == -1) {
-            history.push("/register");
+            window.location.assign("/registration");
             alert("Username or email already registered to a user");
-
         }
 
     }, [appState]);
